@@ -1,0 +1,92 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20 - 4 задание - hard</title>
+</head>
+
+<body>
+  <h1>Задание 4 - hard</h1>
+  <p>Напишите программу, которая проверяет ваше знание таблицы умножения. Сначала, она должна вывести на экран пример,
+    который должен быть сгенерирован случайным образом, для двух чисел от 1 до 9. При этом пользователь должен написать
+    ответ. Если ответ верный, программа должна вывести сообщение "You are correct!". Если не верный или пустой,
+    сообщение "You are wrong".</p>
+  <p>Здесь мы будем улучшать программу, которая была задана как домашнее задание. Только теперь необходимо генерировать
+    примеры в бесконечном цикле, пока пользователь не нажмет "Отмена". Когда он это сделает, нужно завершить цикл и
+    показать пользователю его статистику - общее количество заданных вопросов, количество правильных и неправильных
+    ответов.</p>
+  <p>Выбор "сложности" перед началом теста. </p>
+  <p>Отображение рекомендаций по повторению таблицы в конце теста.</p>
+  <script>
+
+    // определяем уровень сложности
+    const hardLevel = +prompt("Введите уровень сложности: \n 1 - низкая\n 2 - средняя\n 3 - высокая\n иное - все (по умолчанию)");
+    let levelArray;
+    switch (hardLevel) {
+      case 1:
+        levelArray = [1, 2];
+        break;
+      case 2:
+        levelArray = [3, 4, 5];
+        break;
+      case 3:
+        levelArray = [3, 4, 6, 7, 8, 9];
+        break;
+      default:
+        levelArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    }
+
+    // создаем массив ошибок
+    const errorArray = new Array(10);
+    errorArray.fill(0);
+
+    // проверяем таблицу умножения
+    let firstNumber, secondNumber, answer;
+    let rightAnswer = 0;
+    let wrongAnswer = 0;
+    do {
+      firstNumber = levelArray[Math.floor(Math.random() * levelArray.length + 0)];
+      secondNumber = levelArray[Math.floor(Math.random() * levelArray.length + 0)];
+      answer = prompt(`Сколько будет: \nwhat is ${firstNumber} * ${secondNumber} ?`);
+      if (firstNumber * secondNumber === +answer) {
+        alert(`You are correct!`);
+        rightAnswer++;
+      } else if (answer !== null) {
+        alert(`You are wrong`);
+        wrongAnswer++;
+        errorArray[firstNumber]++;
+        errorArray[secondNumber]++;
+      }
+    } while (answer !== null);
+
+    // считаем топ ошибок
+    let errorText = "";
+    if (wrongAnswer > 0) {
+      for (let i = 0; i < 3; i++) {
+        let maxErrorIndex = errorArray.indexOf(Math.max.apply(null, errorArray));
+        if (errorArray[maxErrorIndex] > 0) {
+          errorText += `\nВ таблице на ${maxErrorIndex} - ${errorArray[maxErrorIndex]} `
+          switch (errorArray[maxErrorIndex]) {
+            case 1:
+              errorText += "ошибка";
+              break;
+            case 2:
+              errorText += "ошибки";
+              break;
+            case 3:
+              errorText += "ошибки";
+              break;
+            case 5:
+              errorText += "ошибки";
+              break;
+            default:
+              errorText += "ошибок";
+          }
+          errorArray[maxErrorIndex] *= -1;
+        }
+      }
+    }
+    alert(`Всего получено ${rightAnswer + wrongAnswer} ответов, из них: \n ${rightAnswer} правильных и ${wrongAnswer} неправильных ${errorText}`);
+  </script>
+</body>
+
+</html>

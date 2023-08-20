@@ -1,0 +1,36 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20 - 5 задание</title>
+</head>
+
+<body>
+  <h1>Задание 5</h1>
+  <p>Компьютер не умеет генерировать по-настоящему случайные числа, поскольку в компьютере все определено очень четко.
+    Однако существуют специальные алгоритмы, которые позволяют генерировать числа, похожие на случайные. По логике вещей
+    генератор случайных чисел должен генерировать числа в соответствии с равномерным распределением. То есть, например,
+    если бы мы подбрасывали монету, то выпадение орла или решки было бы примерно одинаковое количество раз, при
+    достижении статистически значимого результата. Проверим, как работает генератор псевдослучайных чисел Math.random()
+    в JavaScript. Нужно написать программу, которая сгенерирует много случайных чисел от 0 до 99. При этом мы будем
+    разделять их на 10 групп: 0-9, 10-19, 20-29 и так далее. Необходимо вывести, какое количество чисел будет
+    принадлежать каждой группе.</p>
+  </p>
+  <script>
+    const tryNumber = 100000;
+    const minRandom = 0;
+    const maxRandom = 99;
+    const groupArray = new Array(Math.ceil((maxRandom - minRandom) / 10));
+    groupArray.fill(0);
+    for (let i = 1; i <= tryNumber; i++) {
+      const num = Math.floor(Math.random() * (maxRandom + 1) + minRandom);
+      groupArray[Math.floor(num / 10)] += 1;
+    }
+    let outText = `Number of samples: ${tryNumber}\n`;
+    for (let i = 0; i < groupArray.length; i++) {
+      outText += `Group ${i * 10} - ${i * 10 + 9}: ${groupArray[i]}\n`;
+    };
+    console.log(outText);
+  </script>
+</body>
+
+</html>

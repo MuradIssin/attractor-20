@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20 lab</title>
+</head>
+
+<body>
+  <h1> упражнение 3</h1>
+  <p>Создать программу, которая бесконечно спрашивает у пользователя целое число от 1 до 100. Если пользователь вводит
+    не число, пустую строку или не попадающее в критерий число, нужно спросить пользователя заново. Если пользователь
+    нажимает "Отмена", необходимо вывести на экран количество введенных чисел и их среднее арифметическое.
+  </p>
+  <script>
+    let count = 0;
+    let summa = 0;
+    let inputData;
+    do {
+      inputData = prompt("введите число от 1 до 100: ")
+      if (inputData !== null && +inputData > 0 && +inputData <= 100) {
+        console.log(+inputData)
+        count++;
+        summa += +inputData;
+      }
+    } while (inputData !== null)
+    console.log(count, summa)
+    alert(`введенных чисел: ${count}, среднее арифметическое: ${summa / count}`)
+  </script>
+</body>
+
+</html>

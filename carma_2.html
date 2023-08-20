@@ -1,0 +1,33 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20 - доп задание</title>
+</head>
+
+<body>
+  <h1>доп.задание 2</h1>
+  <p>Дан массив с числами, например: [10, 20, 30, 50, 235, 300, 475, 598].
+    Выведите в консоль только те числа из массива,
+    которые начинаются на цифру 1, 2 или 5.</p>
+  <p> Усложнение, сгенерировать исходный массив из 10 случайных чисел,
+    находящихся в диапазоне от 10 до 600 </p>
+  </p>
+  <script>
+    const arrayLenght = 10;
+    const minValue = 10;
+    const maxValue = 600;
+    const arrayIncome = [];
+    for (let i = 0; i < arrayLenght; i++) {
+      arrayIncome.push(Math.floor(Math.random() * (maxValue - minValue + 1) + minValue))
+    };
+    console.log("исходный массив: " + arrayIncome);
+    for (let i = 0; i < arrayIncome.length; i++) {
+      const firstNumber = (arrayIncome[i] + "")[0];
+      if (+firstNumber === 1 || +firstNumber === 2 || +firstNumber === 5) {
+        console.log("начинается с 1,2,5: " + arrayIncome[i]);
+      }
+    }
+  </script>
+</body>
+
+</html>

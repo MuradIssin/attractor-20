@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20 lab</title>
+</head>
+
+<body>
+  <h1> упражнение 1</h1>
+  <p>Необходимо сравнить два целых числа, которые введет пользователь.</p>
+  <script>
+    let numberFirst, numberSecond;
+    do {
+      numberFirst = prompt("first number:");
+    } while (numberFirst === null || Number.isNaN(+numberFirst));
+    do {
+      numberSecond = prompt("second number:");
+    } while (numberSecond === null || Number.isNaN(+numberSecond));
+    if (numberFirst === numberSecond) {
+      alert("числа равны");
+    } else if (numberFirst > numberSecond) {
+      alert("ПЕРВОЕ число больше Второго числа");
+    } else alert("ВТОРОЕ число больше Первого числа");
+  </script>
+</body>
+
+</html>

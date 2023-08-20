@@ -1,0 +1,34 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20 - доп задание</title>
+</head>
+
+<body>
+  <h1>доп.задание 1</h1>
+  <p>Дана строка из четного количества цифр. Проверьте, что сумма первой половины цифр равняется сумме второй половины
+    цифр.</p>
+  <p> Если это так - выведите сообщение 'В числе X суммы первой и второй половины цифр равны', в противном случае
+    выведите
+    сообщение 'В числе X суммы первой и второй половины цифр не равны'. Вместо Х подставьте число из анализируемой
+    строки. </p>
+  </p>
+  <script>
+    let stringNum = 8765432112345678;
+    stringNum += '';
+    if (stringNum.length % 2 === 0) {
+      console.log("в строке четное количество цифр");
+      let leftSide = 0;
+      let rightSide = 0;
+      for (let i = 0; i < (stringNum.length / 2); i++) {
+        leftSide += +stringNum[i];
+        rightSide += +stringNum[stringNum.length - i - 1];
+      };
+      if (leftSide === rightSide) {
+        console.log(`В числе ${stringNum} суммы первой и второй половины цифр равны`);
+      } else console.log(`В числе ${stringNum} суммы первой и второй половины цифр не равны`);
+    } else console.log("в строке НЕчетное количество цифр");
+  </script>
+</body>
+
+</html>
